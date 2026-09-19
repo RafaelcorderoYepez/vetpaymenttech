@@ -167,3 +167,8 @@
 
 @keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: no-preference) { .rise-in { animation: rise-in 700ms ease-out both; } .rise-in-delay { animation-delay: 140ms; } }
+
+html.a11y-grayscale body { filter: grayscale(1); }
+html.a11y-high-contrast { --background: oklch(0 0 0); --foreground: oklch(1 0 0); --card: oklch(0 0 0); --card-foreground: oklch(1 0 0); --primary: oklch(1 0 0); --primary-foreground: oklch(0 0 0); --accent: oklch(0.9 0.2 100); --accent-foreground: oklch(0 0 0); --muted: oklch(0.2 0 0); --muted-foreground: oklch(0.9 0 0); --border: oklch(1 0 0); --navy-soft: oklch(1 0 0); --mint: oklch(0.15 0 0); --surface-soft: oklch(0.08 0 0); }
+html.a11y-underline-links a { text-decoration: underline !important; text-underline-offset: 0.2em; }
+html.a11y-readable-font, html.a11y-readable-font body, html.a11y-readable-font button, html.a11y-readable-font input, html.a11y-readable-font select { font-family: Arial, Helvetica, sans-serif !important; line-height: 1.6; }

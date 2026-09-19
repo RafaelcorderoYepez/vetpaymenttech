@@ -8,3 +8,4 @@
 - [x] Match the reference header and add the Contact Us section
 - [x] Add imagery to the primary offering cards
 - [x] Show only Clover Flex in the equipment image
+- [x] Rename the sales contact, resize the logo, and add accessibility tools
