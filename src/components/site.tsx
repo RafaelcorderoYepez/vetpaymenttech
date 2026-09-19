@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import brandMark from "@/assets/vetpaymenttech-mark.png";
+import capitalLogo from "@/assets/capital-paymenttech-logo.png.asset.json";
 
 const leadSchema = z.object({
   practice: z.string().trim().min(2, "Please enter your practice name.").max(120),
@@ -18,12 +18,8 @@ const leadSchema = z.object({
 
 export function BrandLockup() {
   return (
-    <div className="flex min-w-0 items-center gap-3">
-      <img src={brandMark} alt="" width={816} height={816} className="size-11 shrink-0 rounded-md object-cover sm:size-12" />
-      <div className="min-w-0 leading-none">
-        <span className="block truncate text-xl font-black text-primary sm:text-2xl">VET<span className="text-accent">PAYMENT</span>TECH</span>
-        <span className="mt-1 block truncate text-[10px] font-bold uppercase text-muted-foreground sm:text-xs">Capital PaymentTech · Clover PracticePay</span>
-      </div>
+    <div className="flex min-w-0 items-center">
+      <img src={capitalLogo.url} alt="Capital PaymentTech" width={1200} height={328} className="h-9 w-auto max-w-[180px] object-contain sm:h-11 lg:h-16 lg:max-w-[290px]" />
     </div>
   );
 }
@@ -81,10 +77,10 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-card/95 backdrop-blur-md">
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <Link to="/" aria-label="VetPaymentTech home" className="min-w-0"><BrandLockup /></Link>
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation"><Link to="/" className="text-sm font-bold text-primary [&.active]:text-accent">Solutions</Link><Link to="/practicepay" className="text-sm font-bold text-primary [&.active]:text-accent">PracticePay</Link><a href="tel:+15614549475" className="text-sm font-bold text-primary hover:text-accent">561-454-9475</a><SavingsDialog trigger={<Button variant="hero">Free savings analysis <ArrowRight /></Button>} /></nav>
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation"><Link to="/practicepay" className="text-sm font-bold text-primary [&.active]:text-accent">Clover PracticePay</Link><SavingsDialog trigger={<Button variant="hero">Free savings analysis <ArrowRight /></Button>} /></nav>
         <Button variant="ghost" size="icon" className="md:hidden" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
       </div>
-      {open && <nav className="grid gap-1 border-t border-border bg-card px-4 py-3 md:hidden" aria-label="Mobile navigation"><Link to="/" onClick={() => setOpen(false)} className="py-2 font-bold text-primary">Solutions</Link><Link to="/practicepay" onClick={() => setOpen(false)} className="py-2 font-bold text-primary">PracticePay</Link><a href="tel:+15614549475" className="py-2 font-bold text-accent">Call Patrick: 561-454-9475</a><SavingsDialog trigger={<Button variant="hero" className="mt-2 w-full">Free savings analysis</Button>} /></nav>}
+      {open && <nav className="grid gap-1 border-t border-border bg-card px-4 py-3 md:hidden" aria-label="Mobile navigation"><Link to="/practicepay" onClick={() => setOpen(false)} className="py-2 font-bold text-primary">Clover PracticePay</Link><SavingsDialog trigger={<Button variant="hero" className="mt-2 w-full">Free savings analysis</Button>} /></nav>}
     </header>
   );
 }
