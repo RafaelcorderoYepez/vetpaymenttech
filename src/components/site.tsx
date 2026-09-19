@@ -19,7 +19,7 @@ const leadSchema = z.object({
 export function BrandLockup() {
   return (
     <div className="flex min-w-0 items-center">
-      <img src={capitalLogo.url} alt="Capital PaymentTech" width={1200} height={328} className="h-9 w-auto max-w-[180px] object-contain sm:h-11 lg:h-16 lg:max-w-[290px]" />
+      <img src={capitalLogo.url} alt="Capital PaymentTech" width={1200} height={328} className="h-20 w-auto max-w-[292px] object-contain" />
     </div>
   );
 }
@@ -51,7 +51,7 @@ export function SavingsDialog({ trigger }: { trigger: ReactNode }) {
           <div className="px-6 py-14 text-center">
             <span className="mx-auto grid size-16 place-items-center rounded-full bg-mint text-accent"><ShieldCheck size={34} /></span>
             <DialogTitle className="mt-6 text-3xl font-extrabold text-primary">Request received</DialogTitle>
-            <DialogDescription className="mx-auto mt-3 max-w-sm text-base leading-relaxed">Thank you. Patrick will contact you soon to arrange your complimentary savings analysis.</DialogDescription>
+            <DialogDescription className="mx-auto mt-3 max-w-sm text-base leading-relaxed">Thank you. Sales will contact you soon to arrange your complimentary savings analysis.</DialogDescription>
           </div>
         ) : (
           <>
@@ -86,7 +86,7 @@ export function SiteHeader() {
 }
 
 export function FloatingCall() {
-  return <a href="tel:+15614549475" aria-label="Call Patrick Diaz" className="fixed bottom-5 right-5 z-30 grid size-14 place-items-center rounded-full bg-accent text-accent-foreground shadow-float transition-transform hover:-translate-y-1"><Phone size={25} /><span className="sr-only">Call Patrick Diaz at 561-454-9475</span></a>;
+  return <a href="tel:+15614549475" aria-label="Call Sales" className="fixed bottom-5 right-5 z-30 grid size-14 place-items-center rounded-full bg-accent text-accent-foreground shadow-float transition-transform hover:-translate-y-1"><Phone size={25} /><span className="sr-only">Call Sales at 561-454-9475</span></a>;
 }
 
 export function SiteFooter() {
@@ -96,7 +96,7 @@ export function SiteFooter() {
         <div className="grid gap-9 lg:grid-cols-[1.3fr_.7fr_.7fr]">
           <div><BrandLockup /><p className="mt-5 max-w-md leading-relaxed text-primary-foreground/75">Complete payment solutions for modern veterinary practices, backed by personal local support.</p><p className="mt-5 font-script text-3xl text-accent">Partners in a Healthier Tomorrow</p></div>
           <div><h2 className="text-sm font-black uppercase text-accent">Explore</h2><div className="mt-4 grid gap-3"><Link to="/">Payment solutions</Link><Link to="/practicepay">Clover PracticePay</Link></div></div>
-          <div><h2 className="text-sm font-black uppercase text-accent">Direct contact</h2><p className="mt-4 font-bold">Patrick Diaz</p><a className="mt-1 block text-xl font-extrabold hover:text-accent" href="tel:+15614549475">561-454-9475</a><SavingsDialog trigger={<Button variant="footer" className="mt-5">Request an analysis <ArrowRight /></Button>} /></div>
+          <div><h2 className="text-sm font-black uppercase text-accent">Direct contact</h2><p className="mt-4 font-bold">Sales</p><a className="mt-1 block text-xl font-extrabold hover:text-accent" href="tel:+15614549475">561-454-9475</a><SavingsDialog trigger={<Button variant="footer" className="mt-5">Request an analysis <ArrowRight /></Button>} /></div>
         </div>
         <div className="mt-10 flex flex-col gap-3 border-t border-primary-foreground/15 pt-6 text-xs font-semibold uppercase text-primary-foreground/60 sm:flex-row sm:justify-between"><span>© 2026 Capital PaymentTech</span><span>Pets &nbsp;|&nbsp; People &nbsp;|&nbsp; Practices &nbsp;|&nbsp; Brighter Tomorrows</span></div>
       </div>
