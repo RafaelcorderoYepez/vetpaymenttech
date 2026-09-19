@@ -19,7 +19,7 @@ const leadSchema = z.object({
 export function BrandLockup() {
   return (
     <div className="flex min-w-0 items-center">
-      <img src={capitalLogo.url} alt="Capital PaymentTech" width={1200} height={328} className="h-20 w-auto max-w-[292px] object-contain" />
+      <img src={capitalLogo.url} alt="Capital PaymentTech" width={1200} height={328} className="h-9 w-auto max-w-[180px] object-contain sm:h-11 lg:h-20 lg:max-w-[320px]" />
     </div>
   );
 }
