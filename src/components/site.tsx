@@ -96,7 +96,7 @@ export function SiteFooter() {
         <div className="grid gap-9 lg:grid-cols-[1.3fr_.7fr_.7fr]">
           <div><BrandLockup /><p className="mt-5 max-w-md leading-relaxed text-primary-foreground/75">Complete payment solutions for modern veterinary practices, backed by personal local support.</p><p className="mt-5 font-script text-3xl text-accent">Partners in a Healthier Tomorrow</p></div>
           <div><h2 className="text-sm font-black uppercase text-accent">Explore</h2><div className="mt-4 grid gap-3"><Link to="/">Payment solutions</Link><Link to="/practicepay">Clover PracticePay</Link></div></div>
-          <div><h2 className="text-sm font-black uppercase text-accent">Direct contact</h2><p className="mt-4 font-bold">Sales</p><a className="mt-1 block text-xl font-extrabold hover:text-accent" href="tel:+15614549475">561-454-9475</a><SavingsDialog trigger={<Button variant="footer" className="mt-5">Request an analysis <ArrowRight /></Button>} /></div>
+           <div><h2 className="text-sm font-black uppercase text-accent">Direct contact</h2><p className="mt-4 font-bold">Sales</p><a className="mt-1 block text-xl font-extrabold hover:text-accent" href="tel:+15614549475">(954) 451-6808</a><SavingsDialog trigger={<Button variant="footer" className="mt-5">Request an analysis <ArrowRight /></Button>} /></div>
         </div>
         <div className="mt-10 flex flex-col gap-3 border-t border-primary-foreground/15 pt-6 text-xs font-semibold uppercase text-primary-foreground/60 sm:flex-row sm:justify-between"><span>© 2026 Capital PaymentTech</span><span>Pets &nbsp;|&nbsp; People &nbsp;|&nbsp; Practices &nbsp;|&nbsp; Brighter Tomorrows</span></div>
       </div>
