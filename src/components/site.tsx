@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { ArrowRight, Menu, Phone, ShieldCheck, X } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
