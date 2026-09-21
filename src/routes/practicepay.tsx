@@ -71,7 +71,7 @@ function QuoteForm() {
   }
 
   return <form onSubmit={submit} noValidate className="grid gap-5 rounded-lg border border-border bg-card p-4 shadow-card sm:grid-cols-2 sm:p-8">
-    {quoteFields.map(([id, label, placeholder, type]) => <div className="grid min-w-0 gap-2" key={id}><Label htmlFor={`quote-${id}`}>{label}</Label><Input id={`quote-${id}`} name={id} type={type} placeholder={placeholder} aria-invalid={Boolean(errors[id])} aria-describedby={errors[id] ? `quote-${id}-error` : undefined} className="h-11 max-w-full" />{errors[id] && <p id={`quote-${id}-error`} className="text-xs font-medium text-destructive">{errors[id]}</p>}</div>)}
+    {quoteFields.map(([id, label, placeholder, type]) => <div className="grid min-w-0 gap-2" key={id}><Label htmlFor={`quote-${id}`}>{label}</Label><Input id={`quote-${id}`} name={id} type={type} placeholder={placeholder} aria-invalid={Boolean(errors[id])} aria-describedby={errors[id] ? `quote-${id}-error` : undefined} className="h-11 w-full min-w-0" />{errors[id] && <p id={`quote-${id}-error`} className="text-xs font-medium text-destructive">{errors[id]}</p>}</div>)}
     <Button type="submit" size="lg" variant="hero" className="mt-1 w-full px-5 sm:col-span-2 sm:px-8">Get Your Custom Veterinary Offer &amp; Demo <ArrowRight /></Button>
     <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:col-span-2 sm:gap-x-6">{trustBadges.map(({ icon: Icon, label }) => <span key={label} className="inline-flex items-center gap-2 text-xs font-bold uppercase text-navy-soft"><Icon size={16} className="text-accent" /> {label}</span>)}</div>
   </form>;
