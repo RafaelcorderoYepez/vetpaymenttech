@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, CalendarCheck2, Check, CreditCard, FileCheck2, HeartHandshake, MonitorSmartphone, RefreshCcw, Smartphone, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FloatingCall, SavingsDialog, SiteFooter, SiteHeader } from "@/components/site";
-import checkoutImage from "@/assets/vet-checkout.jpg";
+import checkoutImage from "@/assets/vet-checkout-white-terminal.jpg";
 import textPayImage from "@/assets/vet-text-pay.jpg";
 import wellnessImage from "@/assets/vet-wellness.jpg";
 import hardwareImage from "@/assets/vet-hardware-flex.jpg";

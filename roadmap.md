@@ -10,3 +10,4 @@
 - [x] Show only Clover Flex in the equipment image
 - [x] Rename the sales contact, resize the logo, and add accessibility tools
 - [x] Match the Dental accessibility widget and responsive logo sizing
+- [x] Replace black payment terminals in all site photos with the white terminal model

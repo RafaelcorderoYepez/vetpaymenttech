@@ -3,10 +3,10 @@ import { ArrowRight, BarChart3, CalendarClock, ChartNoAxesCombined, Clock3, Cred
 import { Button } from "@/components/ui/button";
 import { FloatingCall, SavingsDialog, SiteFooter, SiteHeader } from "@/components/site";
 import heroImage from "@/assets/vet-hero.jpg";
-import checkoutImage from "@/assets/vet-checkout.jpg";
+import checkoutImage from "@/assets/vet-checkout-white-terminal.jpg";
 import hardwareImage from "@/assets/vet-hardware-flex.jpg";
-import surchargeImage from "@/assets/feature-surcharge.jpg";
-import debitImage from "@/assets/feature-debit.jpg";
+import surchargeImage from "@/assets/feature-surcharge-white-terminal.jpg";
+import debitImage from "@/assets/feature-debit-white-terminal.jpg";
 import fundingImage from "@/assets/feature-funding.jpg";
 import careCreditImage from "@/assets/feature-carecredit.jpg";
 import textPayImage from "@/assets/feature-textpay.jpg";
