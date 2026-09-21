@@ -73,8 +73,29 @@ export function SavingsDialog({ trigger }: { trigger: ReactNode }) {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const current = window.scrollY;
+      if (current < 10) {
+        setVisible(true);
+      } else if (current > lastScrollY.current + 2) {
+        setVisible(false);
+      } else if (current < lastScrollY.current - 2) {
+        setVisible(true);
+      }
+      lastScrollY.current = current;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const pinned = open || visible;
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-card/95 backdrop-blur-md">
+    <header className={`sticky top-0 z-40 border-b border-border/70 bg-card/95 backdrop-blur-md transition-transform duration-300 ${pinned ? "translate-y-0" : "-translate-y-full"}`}>
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <Link to="/" aria-label="VetPaymentTech home" className="min-w-0"><BrandLockup /></Link>
         <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation"><Link to="/practicepay" className="text-sm font-bold text-primary [&.active]:text-accent">Clover PracticePay</Link><SavingsDialog trigger={<Button variant="hero">Free savings analysis <ArrowRight /></Button>} /></nav>
