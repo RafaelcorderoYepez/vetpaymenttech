@@ -5,7 +5,7 @@ import { FloatingCall, SavingsDialog, SiteFooter, SiteHeader } from "@/component
 import checkoutImage from "@/assets/vet-checkout-white-terminal.jpg";
 import textPayImage from "@/assets/vet-text-pay.jpg";
 import wellnessImage from "@/assets/vet-wellness-clover-flex.jpg";
-import hardwareImage from "@/assets/vet-hardware.jpg";
+import hardwareImage from "@/assets/vet-hardware-flex-mini.jpg";
 
 export const Route = createFileRoute("/practicepay")({
   head: () => ({ meta: [
