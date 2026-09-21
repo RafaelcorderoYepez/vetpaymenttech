@@ -79,14 +79,19 @@ export function SiteHeader() {
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY;
+      const last = lastScrollY.current;
       if (current < 10) {
         setVisible(true);
-      } else if (current > lastScrollY.current + 2) {
-        setVisible(false);
-      } else if (current < lastScrollY.current - 2) {
+        lastScrollY.current = current;
+      } else if (current > last) {
+        if (current - last > 5) {
+          setVisible(false);
+          lastScrollY.current = current;
+        }
+      } else if (last - current > 5) {
         setVisible(true);
+        lastScrollY.current = current;
       }
-      lastScrollY.current = current;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
