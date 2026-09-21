@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { ArrowRight, Menu, Phone, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, Phone, ShieldCheck } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -72,42 +72,74 @@ export function SavingsDialog({ trigger }: { trigger: ReactNode }) {
 }
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  const [spacerHeight, setSpacerHeight] = useState(0);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const updateHeight = () => setSpacerHeight(header.offsetHeight);
+    updateHeight();
+
+    const resizeObserver = new ResizeObserver(updateHeight);
+    resizeObserver.observe(header);
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
     const onScroll = () => {
-      const current = window.scrollY;
-      const last = lastScrollY.current;
-      if (current < 10) {
-        setVisible(true);
-        lastScrollY.current = current;
-      } else if (current > last) {
-        if (current - last > 5) {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY && currentScrollY > 80) {
           setVisible(false);
-          lastScrollY.current = current;
-        }
-      } else if (last - current > 5) {
-        setVisible(true);
-        lastScrollY.current = current;
+          } else if (currentScrollY < lastScrollY) {
+            setVisible(true);
+          }
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
     };
+
+    const onMouseMove = (event: MouseEvent) => {
+      if (event.clientY < 64) setVisible(true);
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("mousemove", onMouseMove);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("mousemove", onMouseMove);
+    };
   }, []);
 
-  const pinned = open || visible;
-
   return (
-    <header className={`sticky top-0 z-40 border-b border-border/70 bg-card/95 backdrop-blur-md transition-transform duration-300 ${pinned ? "translate-y-0" : "-translate-y-full"}`}>
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
-        <Link to="/" aria-label="VetPaymentTech home" className="min-w-0"><BrandLockup /></Link>
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation"><Link to="/practicepay" className="text-sm font-bold text-primary [&.active]:text-accent">Clover PracticePay</Link><SavingsDialog trigger={<Button variant="hero">Free savings analysis <ArrowRight /></Button>} /></nav>
-        <Button variant="ghost" size="icon" className="md:hidden" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
-      </div>
-      {open && <nav className="grid gap-1 border-t border-border bg-card px-4 py-3 md:hidden" aria-label="Mobile navigation"><Link to="/practicepay" onClick={() => setOpen(false)} className="py-2 font-bold text-primary">Clover PracticePay</Link><SavingsDialog trigger={<Button variant="hero" className="mt-2 w-full">Free savings analysis</Button>} /></nav>}
-    </header>
+    <>
+      <div aria-hidden="true" style={{ height: spacerHeight }} />
+      <header
+        ref={headerRef}
+        className={`fixed left-0 right-0 top-0 z-50 border-b border-border/60 bg-card/95 backdrop-blur-md transition-transform duration-300 ease-out ${visible ? "translate-y-0" : "-translate-y-full"}`}
+      >
+        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 sm:px-6 lg:px-8">
+          <Link to="/" aria-label="VetPaymentTech home" className="min-w-0"><BrandLockup /></Link>
+          <nav className="flex items-center gap-2 sm:gap-6" aria-label="Main navigation">
+            <Link to="/practicepay" className="hidden text-sm font-bold text-primary transition-colors hover:text-accent md:inline-flex [&.active]:text-accent" activeOptions={{ exact: true }}>Clover PracticePay</Link>
+            <SavingsDialog trigger={<Button variant="hero" className="hidden sm:inline-flex">Free savings analysis <ArrowRight /></Button>} />
+            <SavingsDialog trigger={<Button variant="hero" size="icon" className="sm:hidden" aria-label="Request free savings analysis"><ArrowRight /></Button>} />
+          </nav>
+        </div>
+        <div className="border-t border-border/50 bg-card md:hidden">
+          <div className="mx-auto max-w-7xl px-4 py-2 sm:px-6">
+            <Link to="/practicepay" className="text-sm font-bold text-primary transition-colors hover:text-accent [&.active]:text-accent" activeOptions={{ exact: true }}>Clover PracticePay</Link>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }
 
