@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import checkoutImage from "@/assets/vet-checkout-clover-flex.jpg";
 import textPayImage from "@/assets/vet-text-pay.jpg";
-import wellnessImage from "@/assets/vet-wellness-clover-flex.jpg";
+import wellnessImage from "@/assets/vet-wellness-correct-clover-flex.jpg";
 import hardwareImage from "@/assets/vet-hardware-flex-white-base-mini.jpg";
 
 export const Route = createFileRoute("/practicepay")({
