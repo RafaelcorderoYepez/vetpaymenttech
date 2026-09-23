@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { FloatingCall, SavingsDialog, SiteFooter, SiteHeader } from "@/components/site";
 import heroImage from "@/assets/vet-hero.jpg";
 import checkoutImage from "@/assets/vet-checkout-clover-flex.jpg";
-import hardwareImage from "@/assets/vet-hardware-correct-flex-mini.jpg";
+import hardwareImage from "@/assets/vet-hardware-flex-white-base-mini.jpg";
 import surchargeImage from "@/assets/feature-surcharge-clover-flex.jpg";
 import debitImage from "@/assets/feature-debit-clover-flex.jpg";
 import fundingImage from "@/assets/feature-funding.jpg";

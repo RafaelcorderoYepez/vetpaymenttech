@@ -3,13 +3,14 @@ import { useState, type FormEvent } from "react";
 import { ArrowRight, BadgeCheck, CalendarCheck2, Check, CreditCard, FileCheck2, HeartHandshake, MonitorSmartphone, RefreshCcw, ShieldCheck, Smartphone, Stethoscope, Wrench } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { FloatingCall, SavingsDialog, SiteFooter, SiteHeader } from "@/components/site";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import checkoutImage from "@/assets/vet-checkout-clover-flex.jpg";
 import textPayImage from "@/assets/vet-text-pay.jpg";
 import wellnessImage from "@/assets/vet-wellness-clover-flex.jpg";
-import hardwareImage from "@/assets/vet-hardware-correct-flex-mini.jpg";
+import hardwareImage from "@/assets/vet-hardware-flex-white-base-mini.jpg";
 
 export const Route = createFileRoute("/practicepay")({
   head: () => ({ meta: [
@@ -51,6 +52,14 @@ const trustBadges = [
   { icon: Wrench, label: "Installation, Training & Support" },
 ];
 
+const faqs = [
+  ["Can pet owners pay from their phones?", "Yes. Your team can send a secure payment link by text so clients can pay deposits, outstanding balances, and remote prescription pickups from their own device."],
+  ["Does Clover PracticePay work with veterinary software?", "Integration options depend on your PIMS or EHR. Our team reviews your current workflow and recommends the best setup for systems such as Cornerstone, AVImark, eVetPractice, and Covetrus."],
+  ["Can we collect payments outside reception?", "Yes. Clover Flex lets your team accept payments in exam rooms, treatment areas, and during curbside pickup without sending clients back to the front desk."],
+  ["Can it support wellness plans and recurring payments?", "Available features can support card-on-file and recurring payment workflows for wellness plans, preventive memberships, and routine care, subject to your practice setup."],
+  ["What equipment is available?", "Eligible practices can receive Clover Flex and Clover Mini equipment at no upfront cost, with installation, staff training, and ongoing support included."],
+];
+
 function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -87,6 +96,7 @@ function PracticePayPage() {
     <section id="hardware" className="bg-surface-soft py-16 sm:py-20"><div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8"><div className="overflow-hidden rounded-lg shadow-card"><img src={hardwareImage} alt="Clover Flex and Clover Mini payment terminals in a veterinary clinic" width={1024} height={768} loading="lazy" className="h-full w-full object-cover"/></div><div><p className="font-script text-3xl text-accent">Complimentary equipment</p><h2 className="mt-2 text-3xl font-black uppercase text-primary sm:text-4xl">Clover Flex &amp; Mini at no upfront cost</h2><p className="mt-5 text-lg leading-relaxed text-navy-soft">Equip your mobile care team with reliable hardware designed for fast, familiar checkout.</p><div className="mt-7 grid gap-4">{["Portable checkout in exam rooms and curbside","Flexible workflows for reception teams","Staff training and guided implementation","Personal support from a dedicated account manager"].map(item => <p key={item} className="flex gap-3 font-semibold text-primary"><Check className="shrink-0 text-accent"/> {item}</p>)}</div></div></div></section>
 
     <section className="bg-primary py-16 text-primary-foreground"><div className="mx-auto max-w-6xl px-4 text-center sm:px-6"><RefreshCcw className="mx-auto text-accent" size={42}/><h2 className="mx-auto mt-5 max-w-3xl text-3xl font-black uppercase sm:text-5xl">Seamless PIMS & EHR synchronization</h2><p className="mx-auto mt-5 max-w-3xl text-lg text-primary-foreground/75">Connect payment activity with leading veterinary systems to reduce double entry and keep client accounts current.</p><div className="mt-8 flex flex-wrap justify-center gap-3">{["Cornerstone","AVImark","eVetPractice","Covetrus","and more"].map(name => <span key={name} className="rounded-full border border-primary-foreground/25 px-4 py-2 text-sm font-bold">{name}</span>)}</div></div></section>
+    <section className="bg-surface-soft py-16 sm:py-20" aria-labelledby="faq-heading"><div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[.8fr_1.2fr] lg:px-8"><div><p className="font-script text-3xl text-accent">Questions, answered</p><h2 id="faq-heading" className="mt-2 text-3xl font-black uppercase text-primary sm:text-4xl">Clover PracticePay FAQ</h2><p className="mt-4 leading-relaxed text-navy-soft">We tailor the final setup to your veterinary workflow, client experience, and current systems.</p></div><Accordion type="single" collapsible className="rounded-lg bg-card px-6 shadow-card">{faqs.map(([question, answer], index) => <AccordionItem key={question} value={`faq-${index}`}><AccordionTrigger className="py-5 text-left text-base font-extrabold text-primary hover:no-underline">{question}</AccordionTrigger><AccordionContent className="pr-8 leading-relaxed text-navy-soft">{answer}</AccordionContent></AccordionItem>)}</Accordion></div></section>
     <section id="quote-form" aria-labelledby="quote-heading" className="bg-card py-16 sm:py-20"><div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><div className="mb-10 text-center"><h2 id="quote-heading" className="text-3xl font-black uppercase text-primary sm:text-4xl">Upgrade Payment Processing for Your <span className="text-accent">Veterinary Practice</span></h2><p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-navy-soft">Talk to our local Clover authorized support team for a personalized offer, equipment setup, software integration, and staff training.</p></div><QuoteForm /></div></section>
     <SiteFooter/><FloatingCall/>
   </main>;
