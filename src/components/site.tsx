@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import capitalLogo from "@/assets/capital-paymenttech-logo.png.asset.json";
+import { submitLead } from "@/lib/leads.functions";
 
 const leadSchema = z.object({
   practice: z.string().trim().min(2, "Please enter your practice name.").max(120),
@@ -26,8 +27,9 @@ export function BrandLockup() {
 
 export function SavingsDialog({ trigger }: { trigger: ReactNode }) {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const parsed = leadSchema.safeParse(Object.fromEntries(new FormData(event.currentTarget)));
     if (!parsed.success) {
@@ -35,6 +37,13 @@ export function SavingsDialog({ trigger }: { trigger: ReactNode }) {
       return;
     }
     setErrors({});
+    setSending(true);
+    try {
+      await submitLead({ data: { formName: "Free savings analysis", practice: parsed.data.practice, name: parsed.data.contact, email: parsed.data.email, phone: parsed.data.phone, volume: parsed.data.volume } });
+    } catch (error) {
+      console.error(error);
+    }
+    setSending(false);
     setSubmitted(true);
   }
   const fields = [
@@ -61,7 +70,7 @@ export function SavingsDialog({ trigger }: { trigger: ReactNode }) {
             <form onSubmit={submit} className="grid grid-cols-1 gap-5 overflow-hidden px-6 py-7 sm:grid-cols-2 sm:px-8" noValidate>
               {fields.map(([id, label, placeholder, type]) => <div className="grid min-w-0 gap-2" key={id}><Label htmlFor={`lead-${id}`}>{label}</Label><Input id={`lead-${id}`} name={id} type={type} placeholder={placeholder} aria-invalid={Boolean(errors[id])} className="h-11 min-w-0" />{errors[id] && <p className="text-xs font-medium text-destructive">{errors[id]}</p>}</div>)}
               <div className="grid min-w-0 gap-2 sm:col-span-2"><Label htmlFor="lead-volume">Estimated monthly processing volume</Label><select id="lead-volume" name="volume" defaultValue="" className="h-11 w-full min-w-0 rounded-md border border-input bg-background px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"><option value="" disabled>Select a range</option><option>$0–$25,000</option><option>$25,000–$50,000</option><option>$50,000–$100,000</option><option>$100,000+</option></select>{errors["volume"] && <p className="text-xs font-medium text-destructive">{errors["volume"]}</p>}</div>
-              <Button type="submit" variant="hero" size="lg" className="w-full sm:col-span-2">Request my analysis <ArrowRight /></Button>
+              <Button type="submit" variant="hero" size="lg" disabled={sending} className="w-full sm:col-span-2">{sending ? "Sending…" : <>Request my analysis <ArrowRight /></>}</Button>
               <p className="text-center text-xs text-muted-foreground sm:col-span-2">Your information will only be used to respond to this request.</p>
             </form>
           </>
