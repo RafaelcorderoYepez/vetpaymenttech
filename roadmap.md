@@ -12,3 +12,4 @@
 - [x] Match the Dental accessibility widget and responsive logo sizing
 - [x] Replace black payment terminals in all site photos with the white terminal model
 - [x] Show Clover Flex in the wellness card and Flex with Mini in both equipment sections
+- [x] Correct Clover Flex and Clover Mini product imagery using the supplied references
