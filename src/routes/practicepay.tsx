@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { FloatingCall, SavingsDialog, SiteFooter, SiteHeader } from "@/components/site";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import checkoutImage from "@/assets/vet-checkout-white-terminal.jpg";
+import checkoutImage from "@/assets/vet-checkout-clover-flex.jpg";
 import textPayImage from "@/assets/vet-text-pay.jpg";
 import wellnessImage from "@/assets/vet-wellness-clover-flex.jpg";
-import hardwareImage from "@/assets/vet-hardware-flex-mini.jpg";
+import hardwareImage from "@/assets/vet-hardware-correct-flex-mini.jpg";
 
 export const Route = createFileRoute("/practicepay")({
   head: () => ({ meta: [
