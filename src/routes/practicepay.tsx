@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { FloatingCall, SavingsDialog, SiteFooter, SiteHeader } from "@/components/site";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { submitLead } from "@/lib/leads.functions";
 import checkoutImage from "@/assets/vet-checkout-clover-flex.jpg";
 import textPayImage from "@/assets/vet-text-pay.jpg";
 import wellnessImage from "@/assets/vet-wellness-correct-clover-flex.jpg";
@@ -62,9 +63,10 @@ const faqs = [
 
 function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const parsed = quoteSchema.safeParse(Object.fromEntries(new FormData(event.currentTarget)));
     if (!parsed.success) {
@@ -72,6 +74,13 @@ function QuoteForm() {
       return;
     }
     setErrors({});
+    setSending(true);
+    try {
+      await submitLead({ data: { formName: "PracticePay quote request", practice: parsed.data.practice, name: parsed.data.name, email: parsed.data.email, phone: parsed.data.phone, rooms: parsed.data.rooms, software: parsed.data.software } });
+    } catch (error) {
+      console.error(error);
+    }
+    setSending(false);
     setSubmitted(true);
   }
 

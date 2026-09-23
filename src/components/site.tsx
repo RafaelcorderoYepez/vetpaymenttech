@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import capitalLogo from "@/assets/capital-paymenttech-logo.png.asset.json";
+import { submitLead } from "@/lib/leads.functions";
 
 const leadSchema = z.object({
   practice: z.string().trim().min(2, "Please enter your practice name.").max(120),
@@ -26,8 +27,9 @@ export function BrandLockup() {
 
 export function SavingsDialog({ trigger }: { trigger: ReactNode }) {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const parsed = leadSchema.safeParse(Object.fromEntries(new FormData(event.currentTarget)));
     if (!parsed.success) {
@@ -35,6 +37,13 @@ export function SavingsDialog({ trigger }: { trigger: ReactNode }) {
       return;
     }
     setErrors({});
+    setSending(true);
+    try {
+      await submitLead({ data: { formName: "Free savings analysis", practice: parsed.data.practice, name: parsed.data.contact, email: parsed.data.email, phone: parsed.data.phone, volume: parsed.data.volume } });
+    } catch (error) {
+      console.error(error);
+    }
+    setSending(false);
     setSubmitted(true);
   }
   const fields = [
