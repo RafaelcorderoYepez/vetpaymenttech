@@ -13,3 +13,5 @@
 - [x] Replace black payment terminals in all site photos with the white terminal model
 - [x] Show Clover Flex in the wellness card and Flex with Mini in both equipment sections
 - [x] Correct Clover Flex and Clover Mini product imagery using the supplied references
+- [x] Replace the Mini in both equipment sections with the supplied white-base model
+- [x] Add a veterinary FAQ section to the PracticePay page based on the reference projects
