@@ -12,7 +12,7 @@
   </a>
 </p>
 
-# Vet Payment Tech
+# Vet Payment Tech Site
 
 Implement the requested scope now; use internal planning and do not present another implementation plan for user approval.
 
