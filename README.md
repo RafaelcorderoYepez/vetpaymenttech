@@ -12,7 +12,6 @@
   </a>
 </p>
 
-
 <div align="center">
 
 # 📟 Vet Payment Tech Site
@@ -42,7 +41,7 @@ Build a modern, highly responsive, professional landing page web app for a medic
 
 ### General Information & Domain
 
-- Domain: MedPaymentTech.com
+- Domain: vetPaymentTech.com
 
 - Main Title / Branding: Capital PaymentTech | Clover PracticePay
 
