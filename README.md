@@ -40,6 +40,30 @@ Build a modern, highly responsive, professional landing page web app for a medic
 
 ---
 
+### General Information & Domain
+
+- Domain: MedPaymentTech.com
+
+- Main Title / Branding: Capital PaymentTech | Clover PracticePay
+
+### Visual Style & Color Palette
+
+- Style: Clean, professional, trustworthy, modern healthcare-fintech aesthetics.
+
+- Background Colors: Light gray/off-white background (#F8FAFC / #F1F5F9) with crisp white cards (#FFFFFF).
+
+- Primary Accent Colors: 
+
+  - Deep Navy Blue (#0A2540 or #1E293B) for primary text, main headings, dark footers, and prominent cards.
+
+  - Emerald Green (#10B981 or #059669) for highlights, green accents, checkmark icons, and call-to-action buttons.
+
+- Typography: Sans-serif font (e.g., Inter or Plus Jakarta Sans), clean, high readability, bold headings.
+
+- Layout: Structured multi-column grid layouts with clean iconography, rounded borders, and soft box-shadows.
+
+---
+
 
 Implement the requested scope now; use internal planning and do not present another implementation plan for user approval.
 
