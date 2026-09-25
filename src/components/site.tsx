@@ -172,6 +172,7 @@ export function SiteFooter() {
            <div><h2 className="text-sm font-black uppercase text-accent">Direct contact</h2><p className="mt-4 font-bold">Sales</p><a className="mt-1 block text-xl font-extrabold hover:text-accent" href="tel:+15614549475">(954) 451-6808</a><SavingsDialog trigger={<Button variant="footer" className="mt-5">Request an analysis <ArrowRight /></Button>} /></div>
         </div>
         <div className="mt-10 flex flex-col gap-3 border-t border-primary-foreground/15 pt-6 text-xs font-semibold uppercase text-primary-foreground/60 sm:flex-row sm:justify-between"><span>© 2026 Capital PaymentTech</span><span>Pets &nbsp;|&nbsp; People &nbsp;|&nbsp; Practices &nbsp;|&nbsp; Brighter Tomorrows</span></div>
+        <p className="mt-6 text-[11px] leading-relaxed text-primary-foreground/55">* Subject to dual pricing program evaluation. The Clover name and logo are owned by Clover Network, Inc., a wholly-owned subsidiary of First Data Corporation, and are registered or used in the U.S. and many foreign countries. All other trademarks, service marks, and trade names referenced in this material are the property of their respective owners.</p>
       </div>
     </footer>
   );
