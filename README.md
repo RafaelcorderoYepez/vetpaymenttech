@@ -12,7 +12,34 @@
   </a>
 </p>
 
-# Vet Payment Tech Site
+
+<div align="center">
+
+# 📟 Vet Payment Tech Site
+
+Sitio web oficial y plataforma de marketing optimizada para alto rendimiento y despliegue rápido.
+
+</div>
+
+
+[![Built with Lovable](https://img.shields.io/badge/Built_with-Lovable-blue)](https://lovable.dev)
+[![React](https://img.shields.io/badge/Frontend-React-61DAFB?logo=react&logoColor=black)](https://react.dev)
+[![Tailwind CSS](https://img.shields.io/badge/CSS-Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+
+Build a modern, highly responsive, professional landing page web app for a medical payment processing company using Tailwind CSS and React.
+
+---
+
+## 🚀 Main Technologies
+
+- **Frontend:** Lovable (https://lovable.dev)
+- **Framework:** React con Vite (`@vitejs/plugin-react`)
+- **Estilos:** Tailwind CSS (`@tailwindcss/vite`)
+- **Rendimiento:** Imágenes optimizadas en formato WebP
+- **Control de Versiones:** Git / GitHub
+
+---
+
 
 Implement the requested scope now; use internal planning and do not present another implementation plan for user approval.
 
